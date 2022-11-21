@@ -1,0 +1,82 @@
+{
+  "name": "@stackpy/ui-kit-react",
+  "version": "1.0.0",
+  "description": "STACKPY UI Kit is a reusable component library that helps WOFH contributors build UIs faster. The goal is to make building durable UIs more productive and satisfying.",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "design",
+    "system",
+    "ui",
+    "kit"
+  ],
+  "author": "Hakob Vardanyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wofh/ui-kit-react/issues"
+  },
+  "homepage": "https://wofh.github.io/ui-kit-react",
+  "dependencies": {
+    "@styled-icons/ionicons-outline": "^10.24.0",
+    "@styled-icons/material-outlined": "^10.34.0",
+    "moment": "^2.29.1",
+    "prop-types": "^15.5.4",
+    "react-day-picker": "^7.4.8",
+    "react-dropzone": "^11.3.1",
+    "react-table": "^7.6.3",
+    "styled-components": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/preset-create-react-app": "^2.1.1",
+    "@storybook/react": "^5.3.18",
+    "@storybook/storybook-deployer": "^2.8.5",
+    "auto": "^9.31.1",
+    "cross-env": "^7.0.2",
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "2.0.5",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^4.0.1",
+    "release-it": "^14.2.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "scripts": {
+    "release": "npm run build && release-it && npm run deploy-storybook",
+    "build": "rimraf dist && babel src -d dist",
+    "storybook": "start-storybook -p 9009 --docs",
+    "build-storybook": "build-storybook --docs",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_TOKEN"
+    },
+    "npm": {
+      "publish": true
+    }
+  }
+}
